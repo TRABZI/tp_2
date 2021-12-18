@@ -10,7 +10,6 @@ db:
 
 superapachephp:
         build: ./
-        image: mohammedaminetrabzi/front-en-php
         ports:
         - "8010:80"
         links:

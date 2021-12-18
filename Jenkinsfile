@@ -19,6 +19,7 @@ pipeline {
 		withCredentials([usernamePassword(credentialsId: registryCredential , usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
 		sh " docker login -u $USERNAME -p $PASSWORD "
 		sh " docker rename  mysql/mysql-server $registry_db "
+		sh " docker rename  ubuntu $registry_front "
 		sh " docker push $registry_front " 
 	        sh " docker push $registry_db "
             }

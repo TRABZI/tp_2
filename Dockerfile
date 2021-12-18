@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Karim
+MAINTAINER amine
 RUN apt-get update && \
 apt-get install -y apache2 php libapache2-mod-php mysql-client php7.0-mysql
 RUN sed -i 's/;extension=php_mysqli.dll/extension=php_mysqli.dll/' /etc/php/7.0/apache2/php.ini

@@ -4,8 +4,8 @@ pipeline {
 	registry_db= "mohammedaminetrabzi/back-end-mysql"
         registryCredential = 'mohammedaminetrabzi-dockerhub'  
     }
-
     agent any 
+
     stages { 
         stage('Build Application Containers') { 
             steps { 

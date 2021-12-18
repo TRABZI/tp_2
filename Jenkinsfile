@@ -26,11 +26,5 @@ pipeline {
             }
           }
 	} 
-        stage('Cleaning up') { 
-            steps { 
-                sh "docker rmi $registry_db:$tag "
-		sh "docker rmi $registry_front:$tag"
-            }
-        } 
     }
 }

@@ -11,8 +11,8 @@ pipeline {
             steps { 
                 script { 
                     sh " docker-compose up -d "
-	            sh " docker tag  mysql/mysql-server $registry_db:latest "
-                    sh " docker tag  ubuntu $registry_front:latest "
+	            sh " docker tag  mysql/mysql-server $registry_db "
+                    sh " docker tag  ubuntu $registry_front "
 
                 }
             } 

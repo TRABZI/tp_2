@@ -2,7 +2,8 @@ pipeline {
     environment { 
         registry_front = "mohammedaminetrabzi/front-end-php"
 	registry_db= "mohammedaminetrabzi/back-end-mysql"
-        registryCredential = 'mohammedaminetrabzi-dockerhub'  
+        registryCredential = "mohammedaminetrabzi-dockerhub"
+	tag="latest"
     }
     agent any 
 
@@ -11,9 +12,8 @@ pipeline {
             steps { 
                 script { 
                     sh " docker-compose up -d "
-	            sh " docker tag  mysql/mysql-server $registry_db "
-                    sh " docker tag  ubuntu $registry_front "
-
+	            sh " docker tag  mysql/mysql-server $registry_db:$tag "
+                    sh " docker tag  ubuntu $registry_front:$tag "
                 }
             } 
         }
@@ -21,15 +21,15 @@ pipeline {
             steps { 
 		withCredentials([usernamePassword(credentialsId: registryCredential , usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
 		sh " docker login -u $USERNAME -p $PASSWORD "
-		sh " docker push $registry_front " 
-	        sh " docker push $registry_db "
+		sh " docker push $registry_front:$tag " 
+	        sh " docker push $registry_db:$tag "
             }
           }
 	} 
         stage('Cleaning up') { 
             steps { 
-                sh "docker rmi $registry_db "
-		sh "docker rmi $registry_front"
+                sh "docker rmi $registry_db:$tag "
+		sh "docker rmi $registry_front:$tag"
             }
         } 
     }

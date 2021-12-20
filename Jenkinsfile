@@ -11,7 +11,7 @@ pipeline {
         stage('Build Application Containers') { 
             steps { 
                 script { 
-                    sh " docker-compose up -tdi "
+                    sh " docker-compose up -d "
 	            sh " docker tag  mysql/mysql-server:5.7 $registry_db:$tag "
                     sh " docker tag  ubuntu:16.04 $registry_front:$tag "
                 }

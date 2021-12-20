@@ -3,9 +3,9 @@ db:
         ports:
         - "3306:3306"
         environment:
-        - "MYSQL_ROOT_PASSWORD=passe"
-        - "MYSQL_USER=amine"
-        - "MYSQL_PASSWORD=amine"
+        - "MYSQL_ROOT_PASSWORD=ok"
+        - "MYSQL_USER=root"
+        - "MYSQL_PASSWORD=passe"
         - "MYSQL_DATABASE=my_db_test"
 
 superapachephp:

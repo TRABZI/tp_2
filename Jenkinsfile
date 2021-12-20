@@ -25,6 +25,13 @@ pipeline {
 	        sh " docker push $registry_db:$tag "
             }
           }
-	} 
+	}
+
+
+	stage('Cleaning up') { 
+            steps { 
+                sh "echo 'cleanup'" 
+            }
+        }  
     }
 }
